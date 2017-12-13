@@ -21,3 +21,12 @@ for b in range(0, 26):
 #UPDATE - AUTOMATE FINDING MEANINGFUL SENTENCE
 en_words = words.words()
 s = "CELEBRATESPRINGBREAK"
+start = 0
+end = 1
+
+def is_a_sentence(inp):
+    if inp[start:end] in en_words:
+        start = end
+        end = end + 1
+    else:
+        end = end + 1

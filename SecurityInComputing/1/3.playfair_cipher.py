@@ -5,6 +5,7 @@ def encrypt(msg, key):
     key = key.lower()
     msg = msg.lower()
     key_table, index = create_key_table(key)
+    print(key_table)
     msg = replace_duplicates(msg)
     cipher = ""
     for pair in msg:
