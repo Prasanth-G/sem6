@@ -1,0 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>SIC Captcha Example</title>
+    </head>
+    <body>
+        <img src="{{ captcha_filename }}" alt="captcha">
+        <form action="{{ url_for('validate') }}" method="post">
+            <input type="text" name="char_captcha">
+            <input type="submit">
+        </form>
+    </body>
+</html>
