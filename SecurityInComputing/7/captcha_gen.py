@@ -20,14 +20,14 @@ app = Flask(__name__, template_folder='.')
 @app.route('/', methods=['GET'])
 def handler():
     global filename, stored_capt
-    if os.path.exists(filename):
-        os.remove(filename)
     filename, stored_capt = get_captcha()
     print("*"*10, stored_capt)
     return render_template('index.html', captcha_filename=filename)
         
 @app.route('/validate', methods=['POST'])
 def validate():
+    if os.path.exists(filename):
+        os.remove(filename)
     if request.form['char_captcha'] == stored_capt:
         return '<h1>Captcha Accepted</h1>'
     else:
