@@ -595,3 +595,29 @@ z = data %*% uReduce
 z1 = cbind(z,dataSet[,5])
 
 plot(z1[,1],z1[,2],col = c("red","blue","green")[z1[,3]])
+    
+    
+######### linear reg
+val <- read.csv(file.choose())
+age <- val$A1
+sp <- val$B
+reg <- lm(sp~age)
+ 
+val <- val[-2,]
+ 
+age <- val$A1
+sp <- val$B
+plot(age,sp,col = "blue",main = "age & pressure regression",
+     abline(lm(sp~age)),cex = 1.3,pch = 16,xlab = "age",ylab = "systolic pressure")
+age_ = mean(age)
+sp_ = mean(sp)
+ 
+ssxy = sum((age - age_)*(sp - sp_))
+ssxx = sum((age - age_)**2)
+b1 = ssxy/ssxx
+b0 = sp_ - (b1*age_)
+sp_cap = b0 + b1*age
+sse = sum((sp-sp_cap)**2)
+sy = sum((sp - sp_)**2)
+R2 = 1 - (sse/sy)
+print(R2)
